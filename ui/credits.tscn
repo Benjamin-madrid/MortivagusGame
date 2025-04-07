@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgmc2wehtc1ow"]
+
+[ext_resource type="Theme" uid="uid://c0cfo1p16c14j" path="res://ui/ui_theme.tres" id="1_ed0b0"]
+[ext_resource type="Script" uid="uid://cbf6l1cpr5gmm" path="res://ui/credits.gd" id="2_orljq"]
+[ext_resource type="FontFile" uid="uid://c2roibyh4qrs4" path="res://assets/fonts/Underdog/Underdog-Regular.ttf" id="3_74u3g"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ed0b0")
+script = ExtResource("2_orljq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(350, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -180.5
+offset_right = 175.0
+offset_bottom = 180.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"Title"
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Credits" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_74u3g")
+theme_override_font_sizes/normal_font_size = 1
+bbcode_enabled = true
+text = "[center]
+[font_size=20][color=#eeeeee]Author:[/color][/font_size]
+[font_size=18][url=https://benjamad.itch.io]BenjaMad[/url][/font_size]
+[font_size=20]
+[color=#eeeeee]SFX:[/color]
+[font_size=18][url=https://kanekizlf.itch.io]KanekiZLF[/url] - [url=https://kanekizlf.itch.io/jump-sounds]Jump Sounds[/url][/font_size]
+
+[font_size=18][url=https://yourpalrob.itch.io]YourPalRob[/url] - [url=https://yourpalrob.itch.io/must-have-horror-sound-effects]Horror Sound Effects[/url][/font_size]
+"
+fit_content = true
+scroll_active = false
+
+[node name="Main_Menu" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MAIN MENU"

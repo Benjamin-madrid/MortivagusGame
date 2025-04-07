@@ -1,0 +1,49 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c0cfo1p16c14j"]
+
+[ext_resource type="FontFile" uid="uid://dr8o3mhoix002" path="res://assets/fonts/Nosferotica.ttf" id="1_udl1o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mq11"]
+bg_color = Color(0.168627, 0.105882, 0.105882, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udl1o"]
+bg_color = Color(0.439216, 0.105882, 0.105882, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.54902, 0.14902, 0.223529, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+
+[resource]
+default_font = ExtResource("1_udl1o")
+default_font_size = 70
+Button/colors/font_color = Color(0.478431, 0.121569, 0.176471, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 3
+Button/font_sizes/font_size = 75
+Button/styles/normal = SubResource("StyleBoxFlat_4mq11")
+Play/base_type = &"Button"
+Play/colors/font_color = Color(0.733005, 0.733005, 0.733005, 1)
+Play/colors/font_outline_color = Color(0, 0, 0, 1)
+Play/constants/outline_size = 3
+Play/font_sizes/font_size = 75
+Play/styles/normal = SubResource("StyleBoxFlat_udl1o")
+Title/base_type = &"Label"
+Title/colors/font_color = Color(0.478431, 0.121569, 0.176471, 1)
+Title/colors/font_outline_color = Color(0.0894858, 0.0122768, 0.0317105, 1)
+Title/colors/font_shadow_color = Color(0.227451, 0.0588235, 0.113725, 1)
+Title/constants/outline_size = 15
+Title/constants/shadow_outline_size = 5
+Title/font_sizes/font_size = 150
+creds/base_type = &"Label"
+creds/font_sizes/font_size = 70

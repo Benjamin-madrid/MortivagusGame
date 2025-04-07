@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://df4ei6ty8m0gf"]
+
+[ext_resource type="PackedScene" uid="uid://cs46vui6jdef3" path="res://scenes/map.tscn" id="1_igs51"]
+[ext_resource type="PackedScene" uid="uid://6safped8k2lw" path="res://scenes/player.tscn" id="2_22h1d"]
+[ext_resource type="PackedScene" uid="uid://b6tuvdov6u3o6" path="res://scenes/enemy.tscn" id="3_q157x"]
+
+[node name="Plataformer" type="Node2D"]
+
+[node name="map" parent="." instance=ExtResource("1_igs51")]
+
+[node name="Player" parent="." instance=ExtResource("2_22h1d")]
+position = Vector2(-842, -20)
+
+[node name="Enemy" parent="." instance=ExtResource("3_q157x")]
+position = Vector2(-469, -15)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_q157x")]
+position = Vector2(-208, -15)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_q157x")]
+position = Vector2(-158, -15)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_q157x")]
+position = Vector2(153, -15)
+
+[node name="Enemy5" parent="." instance=ExtResource("3_q157x")]
+position = Vector2(454, -15)
+
+[node name="Enemy6" parent="." instance=ExtResource("3_q157x")]
+position = Vector2(978, -15)
+
+[node name="Enemy7" parent="." instance=ExtResource("3_q157x")]
+position = Vector2(1237, -15)
+
+[node name="Enemy8" parent="." instance=ExtResource("3_q157x")]
+position = Vector2(1313, -15)

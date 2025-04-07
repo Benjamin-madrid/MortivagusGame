@@ -1,0 +1,198 @@
+[gd_scene load_steps=18 format=3 uid="uid://b6tuvdov6u3o6"]
+
+[ext_resource type="Script" uid="uid://3cjlpnfekrle" path="res://scripts/enemy.gd" id="1_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://c0u2mpyrrcb4g" path="res://assets/zombie_idle.png" id="2_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://c7s452h47dpvw" path="res://assets/zombie_walk.png" id="3_c4w8v"]
+[ext_resource type="Script" uid="uid://mq4luuht2aqd" path="res://scripts/hitbox.gd" id="5_c4w8v"]
+[ext_resource type="Script" uid="uid://lgfgjoffsjps" path="res://scripts/hurtbox.gd" id="5_xwavj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_48uxq"]
+radius = 3.0
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_md484"]
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5uy6h")]
+}
+
+[sub_resource type="Animation" id="Animation_nenq2"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5uy6h")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayerEnemy:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.518]
+}
+
+[sub_resource type="Animation" id="Animation_xwavj"]
+resource_name = "walk"
+length = 1.25
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_c4w8v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qclf"]
+_data = {
+&"RESET": SubResource("Animation_md484"),
+&"idle": SubResource("Animation_nenq2"),
+&"walk": SubResource("Animation_xwavj")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c4w8v"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xwavj"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nenq2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_md484"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_w8i8w"]
+states/Start/position = Vector2(186, 72)
+states/idle/node = SubResource("AnimationNodeAnimation_c4w8v")
+states/idle/position = Vector2(366, 72)
+states/walk/node = SubResource("AnimationNodeAnimation_xwavj")
+states/walk/position = Vector2(522, 73)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_nenq2"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_md484")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
+size = Vector2(8, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
+size = Vector2(7, 8)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_4ra3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_48uxq")
+
+[node name="AnimationPlayerEnemy" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8qclf")
+}
+speed_scale = 0.518
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_w8i8w")
+anim_player = NodePath("../AnimationPlayerEnemy")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+texture = ExtResource("2_5uy6h")
+hframes = 4
+
+[node name="Hitbox" type="Area2D" parent="Pivot"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_c4w8v")
+metadata/_custom_type_script = "uid://mq4luuht2aqd"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Hitbox"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_xwavj")
+
+[node name="Hurtbox" type="Area2D" parent="Pivot"]
+script = ExtResource("5_xwavj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Hurtbox"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_c4w8v")
+
+[connection signal="hurtbox_hit" from="Pivot/Hurtbox" to="." method="_on_hurtbox_hurtbox_hit"]
